@@ -181,7 +181,17 @@ int main(int argc, char** argv)
 		output_array.push_back(cU);
 	}
 
-	
+	// データの形式を変更
+	std::vector<int> year_user; // 月ごとでuserの数を取り出す
+	std::vector<int> year_session; // 月ごとでsessionの数を取り出す
+	std::vector<double> year_sp; // session per page 月ごと
+	for (int i = 0; i < 12; i++) {
+		for (auto op = output_array.begin(); op != output_array.end(); op++) {
+			year_user.push_back(op->User_year[i]);
+			year_session.push_back(op->Session_year[i]);
+			year_sp.push_back(op->pagePerSessin_year[i]);
+		}
+	}
 	// テキストファイルとして出力
 	std::string output_file_name = "output.txt";
 	FILE* fo;
@@ -190,13 +200,25 @@ int main(int argc, char** argv)
 		printf("file open error!!\n");
 		return 1;
 	}
+
+	// 1行目
+	fputc('\t', fo);
+	for (auto cl = country_list.begin(); cl != country_list.end(); cl++) {
+		for (auto cc = cl->begin(); cc != cl->end(); cc++) {
+			fputc(*cc, fo);
+		}
+		fputc('\t', fo);
+		fputc('\t', fo);
+	}
+	fputc('\n', fo);
+
 	/* fputc()による出力 */
-	fputc(0x41, fp);
-	fputc(0x42, fp);
-	fputc(0x43, fp);
-	fputc(0x44, fp);
-	fputc(0x45, fp);
-	fputc(0xa, fp);
+	//fputc(0x41, fp);
+	//fputc(0x42, fp);
+	//fputc(0x43, fp);
+	//fputc(0x44, fp);
+	//fputc(0x45, fp);
+	//fputc(0xa, fp);
 
 
 	return 0;

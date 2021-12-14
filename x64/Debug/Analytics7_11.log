@@ -1,2 +1,3 @@
 ﻿  main.cpp
+C:\Users\koho\source\repos\Analytics7_11\Analytics7_11\main.cpp(198,7): warning C4101: 'c': ローカル変数は 1 度も使われていません。
   Analytics7_11.vcxproj -> C:\Users\koho\source\repos\Analytics7_11\x64\Debug\Analytics7_11.exe
